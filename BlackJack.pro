@@ -9,24 +9,24 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    blackjackgame.cpp \
-    card.cpp \
-    deck.cpp \
-    hand.cpp \
-    igame.cpp \
-    main.cpp \
-    mainwindow.cpp
+    src/gamelogic/blackjackgame.cpp \
+    src/gamelogic/card.cpp \
+    src/gamelogic/deck.cpp \
+    src/gamelogic/hand.cpp \
+    src/gamelogic/igame.cpp \
+    src/main.cpp \
+    src/ui/mainwindow.cpp
 
 HEADERS += \
-    blackjackgame.h \
-    card.h \
-    deck.h \
-    hand.h \
-    igame.h \
-    mainwindow.h
+    src/gamelogic/blackjackgame.h \
+    src/gamelogic/card.h \
+    src/gamelogic/deck.h \
+    src/gamelogic/hand.h \
+    src/gamelogic/igame.h \
+    src/ui/mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    src/ui/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
