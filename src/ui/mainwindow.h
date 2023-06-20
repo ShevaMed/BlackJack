@@ -22,6 +22,12 @@ private slots:
 
     void on_exitButton_clicked();
 
+    void on_increaseBetButton_clicked();
+
+    void on_decreaseBetButton_clicked();
+
+    void on_dealButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<BlackjackGame> game;

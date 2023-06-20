@@ -8,14 +8,20 @@
 class Hand
 {
 public:
-    Hand();
+    Hand(int startX, int startY, int cardWidth, int cardIndent);
 
-    void addCard(const Card& card);
+    void addCard(const std::shared_ptr<Card>& card);
     int getScore() const;
+    int getCurrX_() const;
+    int getCurrY_() const;
     void clear();
 
 private:
-    std::vector<Card> cards_;
+    std::vector<std::shared_ptr<Card>> cards_;
+    int startX_, startY_;
+    int currX_;
+    int cardWidth_;
+    int cardIndent_;
 
 };
 

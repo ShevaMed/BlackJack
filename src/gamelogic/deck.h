@@ -4,18 +4,28 @@
 #include "card.h"
 
 #include <vector>
+#include <QPixmap>
 
 class Deck
 {
 public:
-    Deck();
+    Deck(int startX, int startY, int widthCard, int heightCard, QWidget *parent = nullptr);
 
     void shuffle();
-    Card dealCard();
+    void resetCards();
+    const std::shared_ptr<Card>& dealCard();
+
+    void loadSkinCards(QString path);
+    QPixmap getSkinCards() const;
+
+
+
 
 private:
-    std::vector<Card> cards_;
+    std::vector<std::shared_ptr<Card>> cards_;
     int currentCardIndex_;
+    QPixmap skinCards_;
+
 
 };
 
