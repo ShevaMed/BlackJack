@@ -5,7 +5,6 @@
         <file>images/coins/100.png</file>
         <file>images/coins/500.png</file>
         <file>images/coins/1000.png</file>
-        <file>images/skins/skin1.png</file>
         <file>images/textures/gameBackground.jpg</file>
         <file>images/icons/musicOff.svg</file>
         <file>images/icons/musicOn.svg</file>
@@ -15,5 +14,12 @@
         <file>images/icons/stand.svg</file>
         <file>images/icons/deal.svg</file>
         <file>images/icons/exitMainMenu.svg</file>
+        <file>images/icons/minus.svg</file>
+        <file>images/icons/plus.svg</file>
+        <file>images/textures/score.png</file>
+        <file>images/skins/skin1.png</file>
+        <file>images/skins/skin2.png</file>
+        <file>images/skins/skin3.png</file>
+        <file>images/textures/mainMenuBackground.jpg</file>
     </qresource>
 </RCC>

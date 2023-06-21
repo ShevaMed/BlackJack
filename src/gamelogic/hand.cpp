@@ -36,6 +36,11 @@ int Hand::getScore() const
     return score;
 }
 
+int Hand::getScoreCertainCard(int index) const
+{
+    return cards_[index]->getValue();
+}
+
 int Hand::getCurrX_() const
 {
     return currX_;
@@ -44,6 +49,11 @@ int Hand::getCurrX_() const
 int Hand::getCurrY_() const
 {
     return startY_;
+}
+
+const std::shared_ptr<Card> &Hand::getCard(int index) const
+{
+    return cards_[index];
 }
 
 void Hand::clear()

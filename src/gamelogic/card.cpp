@@ -82,11 +82,13 @@ void Card::setSkin(QPixmap skinCards)
     }
 
     QPixmap skin(width, height);
+    skin.fill(Qt::transparent);
     QPainter painter(&skin);
     painter.drawPixmap(0, 0, skinCards, x, y, width, height);
     painter.end();
 
     skin_ = skin;
+    this->update();
 }
 
 QPixmap Card::getSkin()
@@ -98,23 +100,24 @@ void Card::showCard()
 {
     this->show();
 }
-
+#include <QThread>
 void Card::cardAnimation(int xEnd, int yEnd)
 {
     QPropertyAnimation *panim = new QPropertyAnimation(this, "pos");
     panim->setDuration(500);
     panim->setStartValue(QPoint(this->x(), this->y()));
     panim->setEndValue(QPoint(xEnd, yEnd));
-    panim->setEasingCurve({QEasingCurve::InBack});
+    panim->setEasingCurve({QEasingCurve::OutBounce});
     panim->setLoopCount(1);
     panim->start(QAbstractAnimation::DeleteWhenStopped);
+
+
 }
 
 void Card::paintEvent(QPaintEvent *event)
 {
+    Q_UNUSED(event);
+
     QPainter painter(this);
-
-    //qDebug() << "draw";
-
     painter.drawPixmap(rect(), skin_);
 }

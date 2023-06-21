@@ -113,7 +113,7 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>70</height>
+            <height>40</height>
            </size>
           </property>
          </spacer>
@@ -128,7 +128,8 @@
           </property>
           <property name="font">
            <font>
-            <pointsize>20</pointsize>
+            <family>Cascadia Mono</family>
+            <pointsize>24</pointsize>
            </font>
           </property>
           <property name="text">
@@ -144,13 +145,10 @@
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>80</height>
+            <height>40</height>
            </size>
           </property>
          </spacer>
@@ -214,6 +212,12 @@
                 <height>50</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Cascadia Mono</family>
+                <pointsize>18</pointsize>
+               </font>
+              </property>
               <property name="text">
                <string>New game</string>
               </property>
@@ -254,6 +258,12 @@
                 <width>16777215</width>
                 <height>50</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Cascadia Mono</family>
+                <pointsize>18</pointsize>
+               </font>
               </property>
               <property name="text">
                <string>Exit</string>
@@ -302,12 +312,12 @@
            <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Expanding</enum>
+           <enum>QSizePolicy::Fixed</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>70</height>
+            <height>80</height>
            </size>
           </property>
          </spacer>
@@ -518,6 +528,9 @@
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>40</width>
@@ -528,6 +541,9 @@
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <property name="spacing">
+               <number>3</number>
+              </property>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <property name="spacing">
@@ -556,14 +572,14 @@
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>50</width>
+                    <height>50</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>50</width>
+                    <height>50</height>
                    </size>
                   </property>
                   <property name="font">
@@ -572,7 +588,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>+</string>
+                   <string/>
                   </property>
                   <property name="arrowType">
                    <enum>Qt::NoArrow</enum>
@@ -589,14 +605,14 @@
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>50</width>
+                    <height>50</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>35</width>
-                    <height>35</height>
+                    <width>50</width>
+                    <height>50</height>
                    </size>
                   </property>
                   <property name="font">
@@ -605,7 +621,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>-</string>
+                   <string/>
                   </property>
                   <property name="autoRaise">
                    <bool>false</bool>
@@ -640,7 +656,7 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>10</width>
+                  <width>20</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -650,7 +666,8 @@
                <widget class="QLabel" name="label_2">
                 <property name="font">
                  <font>
-                  <pointsize>18</pointsize>
+                  <family>Cascadia Mono</family>
+                  <pointsize>20</pointsize>
                  </font>
                 </property>
                 <property name="text">
@@ -662,7 +679,8 @@
                <widget class="QLabel" name="betLabel">
                 <property name="font">
                  <font>
-                  <pointsize>18</pointsize>
+                  <family>Cascadia Mono</family>
+                  <pointsize>20</pointsize>
                  </font>
                 </property>
                 <property name="text">
@@ -682,7 +700,7 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>50</width>
+                <width>60</width>
                 <height>20</height>
                </size>
               </property>
@@ -690,11 +708,15 @@
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <property name="spacing">
+               <number>3</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_4">
                 <property name="font">
                  <font>
-                  <pointsize>18</pointsize>
+                  <family>Cascadia Mono</family>
+                  <pointsize>20</pointsize>
                  </font>
                 </property>
                 <property name="text">
@@ -706,7 +728,8 @@
                <widget class="QLabel" name="balanceLabel">
                 <property name="font">
                  <font>
-                  <pointsize>18</pointsize>
+                  <family>Cascadia Mono</family>
+                  <pointsize>20</pointsize>
                  </font>
                 </property>
                 <property name="text">
@@ -720,6 +743,9 @@
              <spacer name="horizontalSpacer_7">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -838,7 +864,7 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>50</height>
+            <height>30</height>
            </size>
           </property>
          </spacer>
@@ -855,28 +881,76 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>70</width>
+              <width>35</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="dealerScoreLabel">
-            <property name="font">
-             <font>
-              <pointsize>30</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Cascadia Mono</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Dealer</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="dealerScoreLabel">
+              <property name="minimumSize">
+               <size>
+                <width>70</width>
+                <height>70</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Cascadia Mono</family>
+                <pointsize>30</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="horizontalSpacer_18">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -919,28 +993,79 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>70</width>
+              <width>35</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="playerScoreLabel">
-            <property name="font">
-             <font>
-              <pointsize>30</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Cascadia Mono</family>
+                <pointsize>20</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>You</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="playerScoreLabel">
+              <property name="minimumSize">
+               <size>
+                <width>70</width>
+                <height>70</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Cascadia Mono</family>
+                <pointsize>30</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>0</string>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="horizontalSpacer_17">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -963,7 +1088,7 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>20</width>
-            <height>130</height>
+            <height>90</height>
            </size>
           </property>
          </spacer>
@@ -1064,10 +1189,14 @@
          <layout class="QHBoxLayout" name="horizontalLayout_12">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <property name="spacing">
+             <number>3</number>
+            </property>
             <item>
              <widget class="QLabel" name="label_7">
               <property name="font">
                <font>
+                <family>Cascadia Mono</family>
                 <pointsize>20</pointsize>
                 <bold>true</bold>
                </font>
@@ -1081,6 +1210,7 @@
              <widget class="QLabel" name="betGameLabel">
               <property name="font">
                <font>
+                <family>Cascadia Mono</family>
                 <pointsize>20</pointsize>
                 <bold>true</bold>
                </font>
@@ -1107,10 +1237,14 @@
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <property name="spacing">
+             <number>3</number>
+            </property>
             <item>
              <widget class="QLabel" name="label_8">
               <property name="font">
                <font>
+                <family>Cascadia Mono</family>
                 <pointsize>20</pointsize>
                 <bold>true</bold>
                </font>
@@ -1124,6 +1258,7 @@
              <widget class="QLabel" name="balanceGameLabel">
               <property name="font">
                <font>
+                <family>Cascadia Mono</family>
                 <pointsize>20</pointsize>
                 <bold>true</bold>
                </font>
@@ -1157,18 +1292,39 @@
      <string>Change skin</string>
     </property>
     <addaction name="actionSkin1"/>
+    <addaction name="actionSkin2"/>
+    <addaction name="actionSkin3"/>
+    <addaction name="actionLoadCustomSkin"/>
    </widget>
    <addaction name="menuSkins"/>
   </widget>
   <action name="actionSkin1">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>Skin1</string>
+   </property>
+  </action>
+  <action name="actionSkin2">
+   <property name="text">
+    <string>Skin2</string>
+   </property>
+  </action>
+  <action name="actionSkin3">
+   <property name="text">
+    <string>Skin3</string>
+   </property>
+  </action>
+  <action name="actionLoadCustomSkin">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Load custom skin</string>
    </property>
   </action>
  </widget>

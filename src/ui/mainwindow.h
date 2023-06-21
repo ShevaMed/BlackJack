@@ -20,14 +20,13 @@ public:
 private:
     void updateBetBalanceLabels(int value);
     void initGame();
+    void endGame();
 
 protected:
     void paintEvent(QPaintEvent* event) override;
 
 private slots:
     void on_newGameButton_clicked();
-
-    void on_exitButton_clicked();
 
     void on_dealButton_clicked();
 
@@ -41,9 +40,18 @@ private slots:
 
     void on_exitMainMenuButton_clicked();
 
+    void on_actionSkin1_triggered();
+
+    void on_actionSkin2_triggered();
+
+    void on_actionSkin3_triggered();
+
+    void on_actionLoadCustomSkin_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<BlackjackGame> game_;
-    QPixmap backgroundImage_;
+    QPixmap gameBackground_;
+    QPixmap mainMenuBackground_;
 };
 #endif // MAINWINDOW_H
