@@ -17,6 +17,7 @@ public:
 
     void loadSkinCards(QString path);
     QPixmap getSkinCards() const;
+    void updateSkinCards();
 
 
 

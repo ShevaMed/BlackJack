@@ -31,10 +31,10 @@ void Deck::shuffle()
 
 void Deck::resetCards()
 {
-    for (int i = 0; i <= currentCardIndex_; ++i) {
+    for (int i = 0; i < currentCardIndex_; ++i) {
         cards_[i]->cardReset();
     }
-
+    // reset for deck image (last card)
     cards_[cards_.size() - 1]->cardReset();
 }
 
@@ -51,4 +51,13 @@ void Deck::loadSkinCards(QString path)
 QPixmap Deck::getSkinCards() const
 {
     return skinCards_;
+}
+
+void Deck::updateSkinCards()
+{
+    for (int i = 0; i < currentCardIndex_; ++i) {
+        cards_[i]->setSkin(skinCards_);
+    }
+    // set skin for deck image (last card)
+    cards_[cards_.size() - 1]->setSkin(skinCards_);
 }

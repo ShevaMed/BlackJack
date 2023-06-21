@@ -3,21 +3,19 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QLayout>
+#include <QMessagebox>
 
-BlackjackGame::BlackjackGame(int initialBalance, QWidget *parent)
-    : QWidget(parent),
-      balance_(initialBalance),
-      widthCard_(95), heightCard_(148),
-      initDeckX_(parent->width() - 150), initDeckY_(50),
-      initDealerHandX_(150), initDealerHandY_(100),
-      initPlayerHandX_(150), initPlayerHandY_(300),
-      cardIndent_(20)
+BlackjackGame::BlackjackGame(int initialBalance, QWidget *parent) :
+    balance_(initialBalance),
+    widthCard_(95), heightCard_(148),
+    initDeckX_(900), initDeckY_(50),
+    initDealerHandX_(150), initDealerHandY_(50),
+    initPlayerHandX_(150), initPlayerHandY_(280),
+    cardIndent_(15)
 {
     deck_ = std::make_unique<Deck>(initDeckX_, initDeckY_, widthCard_, heightCard_, parent);
     dealerHand_ = std::make_unique<Hand>(initDealerHandX_, initDealerHandY_, widthCard_, cardIndent_);
     playerHand_ = std::make_unique<Hand>(initPlayerHandX_, initPlayerHandY_, widthCard_, cardIndent_);
-
-    this->resize(800, 400);
 
 }
 
@@ -55,18 +53,17 @@ void BlackjackGame::addCard(QString nameHand, bool hiden)
     card->setSkin(deck_->getSkinCards());
     card->showCard();
     card->cardAnimation(xEnd, yEnd);
-    this->parentWidget()->update();
 }
 
-void BlackjackGame::playerHit()
+bool BlackjackGame::playerHit()
 {
     this->addCard("Player", false);
-    //Player's hand:
 
     if (playerHand_->getScore() > 21) {
-        //Player busts! You lose.
-
+        QMessageBox::information(nullptr, "Game over", "Player busts! You lose.");
+        return false;
     }
+    return true;
 }
 
 void BlackjackGame::playerStand()
@@ -75,24 +72,21 @@ void BlackjackGame::playerStand()
         this->addCard("Dealer", false);
     }
 
-    //Dealer's hand:
-
     int playerScore = playerHand_->getScore();
     int dealerScore = dealerHand_->getScore();
 
     if (dealerScore > 21 || playerScore > dealerScore) {
-        //Player wins!
-        balance_ += bet_;
+        QMessageBox::information(nullptr, "Game over", "You win!");
+        balance_ += bet_ * 2;
 
     }
     else if (playerScore < dealerScore) {
-        //Dealer wins!
-        balance_ -= bet_;
+        QMessageBox::information(nullptr, "Game over", "Dealer wins!");
 
     }
     else {
-        //"It's a tie!
-
+        QMessageBox::information(nullptr, "Game over", "It's a tie!");
+        balance_ += bet_;
     }
 
     if (balance_ <= 0) {
@@ -101,29 +95,20 @@ void BlackjackGame::playerStand()
     }
 }
 
-void BlackjackGame::placeBet(int amount)
+bool BlackjackGame::placeBet(int amount)
 {
     if (amount <= 0) {
-        //Invalid bet amount.
-        return;
-    }
-
-    if (amount > balance_) {
-        //Insufficient balance to place the bet.
-        return;
+        QMessageBox::warning(nullptr, "Invalid bet", "Place your bet!");
+        return false;
     }
 
     bet_ = amount;
     balance_ -= bet_;
-    //Bet placed:
+    return true;
 }
 
 int BlackjackGame::getBalance() const
 {
-    return bet_;
+    return balance_;
 }
 
-void BlackjackGame::paintEvent(QPaintEvent *event)
-{
-
-}

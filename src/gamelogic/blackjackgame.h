@@ -6,23 +6,20 @@
 #include "hand.h"
 
 #include <memory>
-#include <QWidget>
 
-class BlackjackGame : IGame, QWidget
+
+class BlackjackGame : IGame
 {
 public:
-    explicit BlackjackGame(int initialBalance, QWidget *parent = nullptr);
+    BlackjackGame(int initialBalance, QWidget *parent);
 
     void start() override;
     void addCard(QString nameHand, bool hiden) override;
-    void playerHit() override;
+    bool playerHit() override;
     void playerStand() override;
-    void placeBet(int amount) override;
+    bool placeBet(int amount) override;
 
     int getBalance() const;
-
-protected:
-    void paintEvent(QPaintEvent* event) override;
 
 private:
     std::unique_ptr<Deck> deck_;
