@@ -6,6 +6,9 @@ The cards are animated and appear to move onto the screen from any side. Additio
 ## Development
 The implementation follows modern C++ practices and utilizes various features such as virtual functions, smart pointers, and RAII. The codebase embraces the best practices of C++ and aims to provide an efficient and maintainable solution.
 
+## Demonstration
+![screenshot](https://github.com/ShevaMed/BlackJack/blob/main/screenshots/demonstration.gif)
+
 ## Screenshots
 ![screenshot](https://github.com/ShevaMed/BlackJack/blob/main/screenshots/screen1.png)
 ![screenshot](https://github.com/ShevaMed/BlackJack/blob/main/screenshots/screen2.png)
