@@ -30,5 +30,6 @@
         <file>sfx/theme.mp3</file>
         <file>sfx/tie.wav</file>
         <file>sfx/win.wav</file>
+        <file>images/icons/icon.png</file>
     </qresource>
 </RCC>
