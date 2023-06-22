@@ -3,8 +3,8 @@
 AudioHandler::AudioHandler()
     : musicPlayer_(std::make_unique<QMediaPlayer>()),
       audioOutput_(std::make_unique<QAudioOutput>()),
-      сardPlaceSound_(loadSoundEffect(":/sfx/сardPlace.wav")),
-      сoinClickSound_(loadSoundEffect(":/sfx/сoinClick.wav")),
+      сardPlaceSound_(loadSoundEffect(":/sfx/cardPlace.wav")),
+      сoinClickSound_(loadSoundEffect(":/sfx/coinClick.wav")),
       dealSound_(loadSoundEffect(":/sfx/deal.wav")),
       roundEndSound_(loadSoundEffect(":/sfx/roundEnd.wav")),
       gameOverSound_(loadSoundEffect(":/sfx/gameOver.wav")),
@@ -17,14 +17,14 @@ AudioHandler::AudioHandler()
     musicPlayer_->setAudioOutput(audioOutput_.get());
     musicPlayer_->setSource(QUrl("qrc:/sfx/theme.mp3"));
     musicPlayer_->setLoops(QMediaPlayer::Infinite);
-    audioOutput_->setVolume(0.1f);
+    audioOutput_->setVolume(0.04f);
 }
 
 std::unique_ptr<QSoundEffect> AudioHandler::loadSoundEffect(QString path)
 {
     auto sound = std::make_unique<QSoundEffect>();
     sound->setSource(QUrl("qrc" + path));
-    sound->setVolume(0.2f);
+    sound->setVolume(0.15f);
     return sound;
 }
 
