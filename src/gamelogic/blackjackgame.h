@@ -4,6 +4,7 @@
 #include "igame.h"
 #include "deck.h"
 #include "hand.h"
+#include "src/audio/audiohandler.h"
 
 #include <memory>
 #include <QLabel>
@@ -11,7 +12,8 @@
 class BlackjackGame : IGame
 {
 public:
-    BlackjackGame(int initialBalance, QWidget *parent, QLabel *dealerScore, QLabel *playerScore);
+    BlackjackGame(int initialBalance, std::shared_ptr<AudioHandler> audioHandler,
+                  QWidget *parent, QLabel *dealerScore, QLabel *playerScore);
 
     void start() override;
     void addCard(QString nameHand, bool hiden) override;
@@ -25,6 +27,7 @@ public:
     void changeCardsSkin(QString path);
 
 private:
+    std::shared_ptr<AudioHandler> audioHandler_;
     std::unique_ptr<Deck> deck_;
     std::unique_ptr<Hand> dealerHand_;
     std::unique_ptr<Hand> playerHand_;

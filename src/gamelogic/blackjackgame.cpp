@@ -1,11 +1,11 @@
 #include "blackjackgame.h"
 
-#include <memory>
 #include <QMessageBox>
 
-BlackjackGame::BlackjackGame(int initialBalance, QWidget *parent,
-                             QLabel *dealerScore, QLabel *playerScore)
-    : initBalance_(initialBalance),
+BlackjackGame::BlackjackGame(int initialBalance, std::shared_ptr<AudioHandler> audioHandler,
+                             QWidget *parent, QLabel *dealerScore, QLabel *playerScore)
+    : audioHandler_(audioHandler),
+      initBalance_(initialBalance),
       balance_(initialBalance),
       dealerScore_(dealerScore), playerScore_(playerScore),
       widthCard_(90), heightCard_(140),
@@ -14,6 +14,8 @@ BlackjackGame::BlackjackGame(int initialBalance, QWidget *parent,
       initPlayerHandX_(170), initPlayerHandY_(280),
       cardIndent_(15)
 {
+
+
     deck_ = std::make_unique<Deck>(initDeckX_, initDeckY_, widthCard_, heightCard_, parent);
     dealerHand_ = std::make_unique<Hand>(initDealerHandX_, initDealerHandY_, widthCard_, cardIndent_);
     playerHand_ = std::make_unique<Hand>(initPlayerHandX_, initPlayerHandY_, widthCard_, cardIndent_);
@@ -55,6 +57,8 @@ void BlackjackGame::addCard(QString nameHand, bool hiden)
 
     card->setSkin(deck_->getSkinCards());
     card->showCard();
+
+    audioHandler_->playCardPlaceSound();
     card->cardAnimation(xEnd, yEnd);
 }
 
@@ -63,6 +67,7 @@ bool BlackjackGame::playerHit()
     this->addCard("Player", false);
 
     if (playerHand_->getScore() > 21) {
+        audioHandler_->playLossSound();
         this->endGame("You bust!");
         return false;
     }
@@ -80,13 +85,16 @@ void BlackjackGame::playerStand()
 
     if (dealerScore > 21 || playerScore > dealerScore) {
         balance_ += bet_ * 2;
+        audioHandler_->playWinSound();
         this->endGame("You win!");
     }
     else if (playerScore < dealerScore) { 
+        audioHandler_->playLossSound();
         this->endGame("Dealer wins!");
     }
     else {
         balance_ += bet_;
+        audioHandler_->playTieSound();
         this->endGame("It's a tie!");
     }
 }
@@ -98,6 +106,7 @@ bool BlackjackGame::placeBet(int amount)
         return false;
     }
 
+    audioHandler_->playDealSound();
     bet_ = amount;
     balance_ -= bet_;
     return true;
@@ -110,8 +119,9 @@ void BlackjackGame::endGame(QString message)
     card->setHiden(false);
     card->setSkin(deck_->getSkinCards());
 
-    dealerScore_->setText(QString::number(dealerHand_->getScore()));
+    dealerScore_->setText(QString::number(dealerHand_->getScore()));   
     QMessageBox::information(nullptr, "Round over", message);
+    audioHandler_->playRoundEndSound();
 }
 
 int BlackjackGame::getBalance() const

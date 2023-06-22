@@ -1,7 +1,6 @@
 #include "card.h"
 
 #include <QPainter>
-#include <QPushButton>
 #include <QPropertyAnimation>
 
 Card::Card(Rank r, Suit s, int startX, int startY, int width, int height, QWidget *parent)
@@ -100,18 +99,16 @@ void Card::showCard()
 {
     this->show();
 }
-#include <QThread>
+
 void Card::cardAnimation(int xEnd, int yEnd)
 {
     QPropertyAnimation *panim = new QPropertyAnimation(this, "pos");
     panim->setDuration(500);
     panim->setStartValue(QPoint(this->x(), this->y()));
     panim->setEndValue(QPoint(xEnd, yEnd));
-    panim->setEasingCurve({QEasingCurve::OutBounce});
+    panim->setEasingCurve({QEasingCurve::InBack});
     panim->setLoopCount(1);
     panim->start(QAbstractAnimation::DeleteWhenStopped);
-
-
 }
 
 void Card::paintEvent(QPaintEvent *event)

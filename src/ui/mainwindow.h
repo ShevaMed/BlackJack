@@ -22,9 +22,6 @@ private:
     void initGame();
     void endGame();
 
-protected:
-    void paintEvent(QPaintEvent* event) override;
-
 private slots:
     void on_newGameButton_clicked();
 
@@ -48,8 +45,12 @@ private slots:
 
     void on_actionLoadCustomSkin_triggered();
 
+protected:
+    void paintEvent(QPaintEvent* event) override;
+
 private:
     Ui::MainWindow *ui;
+    std::shared_ptr<AudioHandler> audioHandler_;
     std::unique_ptr<BlackjackGame> game_;
     QPixmap gameBackground_;
     QPixmap mainMenuBackground_;

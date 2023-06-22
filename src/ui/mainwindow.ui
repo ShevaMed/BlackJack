@@ -30,8 +30,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>35</width>
-          <height>35</height>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
          </size>
         </property>
         <property name="text">
@@ -62,8 +68,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>35</width>
-          <height>35</height>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -84,8 +96,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>35</width>
-          <height>35</height>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
          </size>
         </property>
         <property name="text">

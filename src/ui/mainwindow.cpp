@@ -8,12 +8,14 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
-      ui(new Ui::MainWindow)
+      ui(new Ui::MainWindow),
+      audioHandler_(std::make_shared<AudioHandler>())
 {
     ui->setupUi(this);
     this->setFixedSize(1050, 650);
 
-    game_ = (std::make_unique<BlackjackGame>(1000, ui->gamePage,
+    audioHandler_->playMusic();
+    game_ = (std::make_unique<BlackjackGame>(1000, audioHandler_, ui->gamePage,
                                              ui->dealerScoreLabel, ui->playerScoreLabel));
 
     gameBackground_.load(":/images/textures/gameBackground.jpg");
@@ -121,6 +123,7 @@ void MainWindow::updateBetBalanceLabels(int value)
     int newBetValue = ui->betLabel->text().toInt() + value;
 
     if (newBetValue <= game_->getBalance() && newBetValue >= 0) {
+        audioHandler_->playCoinClickSound();
         ui->betLabel->setText(QString::number(newBetValue));
         int currBalanceValue = ui->balanceLabel->text().toInt();
         ui->balanceLabel->setText(QString::number(currBalanceValue - value));
@@ -135,13 +138,13 @@ void MainWindow::initGame()
 
 void MainWindow::endGame()
 {
+    this->initGame();
+    ui->stackedWidget->setCurrentWidget(ui->placeBetPage);
+
     if (game_->getBalance() <= 0) {
-        ui->stackedWidget->setCurrentWidget(ui->mainMenuPage);
+        audioHandler_->playGameOverSound();
         QMessageBox::information(nullptr, "Game over", "You don't have any money!");
-    }
-    else {
-        this->initGame();
-        ui->stackedWidget->setCurrentWidget(ui->placeBetPage);
+        ui->stackedWidget->setCurrentWidget(ui->mainMenuPage);
     }
 }
 
@@ -194,23 +197,37 @@ void MainWindow::on_hitButton_clicked()
 void MainWindow::on_standButton_clicked()
 {
     game_->playerStand();
-    this->initGame();
-    ui->stackedWidget->setCurrentWidget(ui->placeBetPage);
+    this->endGame();
 }
 
 
 void MainWindow::on_musicButton_clicked()
 {
-    ui->musicButton->setStyleSheet("image: url(:/images/icons/musicOff.svg) no-repeat; "
-                                   "background-color: transparent;");
-
+    if (audioHandler_->isMusicPlaying()) {
+        ui->musicButton->setStyleSheet("image: url(:/images/icons/musicOff.svg) no-repeat; "
+                                       "background-color: transparent;");
+        audioHandler_->stopMusic();
+    }
+    else {
+        ui->musicButton->setStyleSheet("image: url(:/images/icons/musicOn.svg) no-repeat; "
+                                       "background-color: transparent;");
+        audioHandler_->playMusic();
+    }
 }
 
 
 void MainWindow::on_volumeButton_clicked()
 {
-    ui->volumeButton->setStyleSheet("image: url(:/images/icons/volumeOff.svg) no-repeat; "
-                                   "background-color: transparent;");
+    if (audioHandler_->isSoundEffectsEnabled()) {
+        ui->volumeButton->setStyleSheet("image: url(:/images/icons/volumeOff.svg) no-repeat; "
+                                       "background-color: transparent;");
+        audioHandler_->enableSoundEffects(false);
+    }
+    else {
+        ui->volumeButton->setStyleSheet("image: url(:/images/icons/volumeOn.svg) no-repeat; "
+                                       "background-color: transparent;");
+        audioHandler_->enableSoundEffects(true);
+    }
 }
 
 
