@@ -64,11 +64,8 @@ void Card::setHiden(bool hiden)
 
 void Card::setSkin(QPixmap skinCards)
 {
-    //int countRank = static_cast<int>(Card::Rank::King);
-    //int countSuit = static_cast<int>(Card::Suit::Spades);
-
-    int width = skinCards.width() / 13;
-    int height = skinCards.height() / 5;
+    int width = skinCards.width() / static_cast<int>(Card::Rank::King);
+    int height = skinCards.height() / (static_cast<int>(Card::Suit::Spades) + 1);
     int x, y;
 
     if (hiden_) {
@@ -82,17 +79,13 @@ void Card::setSkin(QPixmap skinCards)
 
     QPixmap skin(width, height);
     skin.fill(Qt::transparent);
+
     QPainter painter(&skin);
     painter.drawPixmap(0, 0, skinCards, x, y, width, height);
     painter.end();
 
     skin_ = skin;
     this->update();
-}
-
-QPixmap Card::getSkin()
-{
-    return skin_;
 }
 
 void Card::showCard()
@@ -102,13 +95,13 @@ void Card::showCard()
 
 void Card::cardAnimation(int xEnd, int yEnd)
 {
-    QPropertyAnimation *panim = new QPropertyAnimation(this, "pos");
-    panim->setDuration(500);
-    panim->setStartValue(QPoint(this->x(), this->y()));
-    panim->setEndValue(QPoint(xEnd, yEnd));
-    panim->setEasingCurve({QEasingCurve::InBack});
-    panim->setLoopCount(1);
-    panim->start(QAbstractAnimation::DeleteWhenStopped);
+    QPropertyAnimation *animation = new QPropertyAnimation(this, "pos");
+    animation->setDuration(500);
+    animation->setStartValue(QPoint(this->x(), this->y()));
+    animation->setEndValue(QPoint(xEnd, yEnd));
+    animation->setEasingCurve({QEasingCurve::InBack});
+    animation->setLoopCount(1);
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
 }
 
 void Card::paintEvent(QPaintEvent *event)

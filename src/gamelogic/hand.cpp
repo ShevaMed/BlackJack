@@ -23,7 +23,7 @@ int Hand::getScore() const
     for (const auto& card : cards_) {
         score += card->getValue();
 
-        if (card->getRank() == Card::Ace) {
+        if (card->getRank() == Card::Rank::Ace) {
             ++numAces;
         }
     }

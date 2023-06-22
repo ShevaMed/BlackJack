@@ -1,8 +1,8 @@
 #include "src/ui/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "src/style/stylehelper.h"
 
 #include <QPainter>
-#include <QPixmap>
 #include <QFileDialog>
 #include <QMessageBox>
 
@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setFixedSize(1050, 650);
+    this->setStyleSheet(StyleHelper::getMainWindowStyle());
 
     audioHandler_->playMusic();
     game_ = (std::make_unique<BlackjackGame>(1000, audioHandler_, ui->gamePage,
@@ -21,86 +22,27 @@ MainWindow::MainWindow(QWidget *parent)
     gameBackground_.load(":/images/textures/gameBackground.jpg");
     mainMenuBackground_.load(":/images/textures/mainMenuBackground.jpg");
 
-    ui->coin20Button->setStyleSheet("QPushButton { image: url(:/images/coins/20.png); "
-                                    "background-color: transparent; }"
-                                    "QPushButton::hover { border: 2px solid #ffffff; }"
-                                    "QPushButton:pressed { background-color: #9c0000; }");
+    ui->coin20Button->setStyleSheet(StyleHelper::getCoinButtonStyle(20));
+    ui->coin50Button->setStyleSheet(StyleHelper::getCoinButtonStyle(50));
+    ui->coin100Button->setStyleSheet(StyleHelper::getCoinButtonStyle(100));
+    ui->coin500Button->setStyleSheet(StyleHelper::getCoinButtonStyle(500));
+    ui->coin1000Button->setStyleSheet(StyleHelper::getCoinButtonStyle(1000));
+    ui->increaseBetButton->setStyleSheet(StyleHelper::getIncreaseButtonStyle());
+    ui->decreaseBetButton->setStyleSheet(StyleHelper::getDecreaseButtonStyle());
 
-    ui->coin50Button->setStyleSheet("QPushButton { image: url(:/images/coins/50.png); "
-                                    "background-color: transparent; }"
-                                    "QPushButton::hover { border: 2px solid #ffffff; }"
-                                    "QPushButton:pressed { background-color: #9c0000; }");
+    ui->musicButton->setStyleSheet(StyleHelper::getMusicOnButtonStyle());
+    ui->volumeButton->setStyleSheet(StyleHelper::getVolumeOnButtonStyle());
+    ui->exitMainMenuButton->setStyleSheet(StyleHelper::getExitMainMenuButtonStyle());
 
-    ui->coin100Button->setStyleSheet("QPushButton { image: url(:/images/coins/100.png); "
-                                     "background-color: transparent; }"
-                                     "QPushButton::hover { border: 2px solid #ffffff; }"
-                                     "QPushButton:pressed { background-color: #9c0000; }");
+    ui->hitButton->setStyleSheet(StyleHelper::getGameButtonStyle());
+    ui->standButton->setStyleSheet(StyleHelper::getGameButtonStyle());
+    ui->dealButton->setStyleSheet(StyleHelper::getGameButtonStyle());
 
-    ui->coin500Button->setStyleSheet("QPushButton { image: url(:/images/coins/500.png); "
-                                     "background-color: transparent; }"
-                                     "QPushButton::hover { border: 2px solid #ffffff; }"
-                                     "QPushButton:pressed { background-color: #9c0000; }");
+    ui->newGameButton->setStyleSheet(StyleHelper::getMainMenuButtonStyle());
+    ui->exitButton->setStyleSheet(StyleHelper::getMainMenuButtonStyle());
 
-    ui->coin1000Button->setStyleSheet("QPushButton { image: url(:/images/coins/1000.png); "
-                                      "background-color: transparent; }"
-                                      "QPushButton::hover { border: 2px solid #ffffff; }"
-                                      "QPushButton:pressed { background-color: #9c0000; }");
-
-    ui->musicButton->setStyleSheet("image: url(:/images/icons/musicOn.svg) no-repeat; "
-                                   "background-color: transparent;");
-
-    ui->volumeButton->setStyleSheet("image: url(:/images/icons/volumeOn.svg) no-repeat; "
-                                   "background-color: transparent;");
-
-    ui->exitMainMenuButton->setStyleSheet("image: url(:/images/icons/exitMainMenu.svg) no-repeat; "
-                                   "background-color: transparent;");
-
-    ui->increaseBetButton->setStyleSheet("QToolButton { image: url(:/images/icons/plus.svg) no-repeat; "
-                                         "background-color: transparent; }"
-                                         "QToolButton:hover { border: 2px solid #ffffff; }"
-                                         "QToolButton:pressed { background-color: #9c0000; }");
-
-    ui->decreaseBetButton->setStyleSheet("QToolButton { image: url(:/images/icons/minus.svg) no-repeat; "
-                                         "background-color: transparent; }"
-                                         "QToolButton:hover { border: 2px solid #ffffff; }"
-                                         "QToolButton:pressed { background-color: #9c0000; }");
-
-    this->setStyleSheet("QLabel { background-color: transparent; color: #ffffff; font-weight: bold; }");
-
-    ui->hitButton->setStyleSheet("QPushButton { background-color: #10c92f; color: #ffffff; font-weight: bold; "
-                                 "border-top-right-radius: 15px; "
-                                 "border-top-left-radius: 0px; "
-                                 "border-bottom-right-radius: 0px; "
-                                 "border-bottom-left-radius: 15px; }"
-                                 "QPushButton::hover { border: 2px solid #ffffff; }"
-                                 "QPushButton:pressed { background-color: #9c0000; }");
-
-    ui->standButton->setStyleSheet("QPushButton { background-color: #10c92f; color: #ffffff; font-weight: bold; "
-                                   "border-top-right-radius: 15px; "
-                                   "border-top-left-radius: 0px; "
-                                   "border-bottom-right-radius: 0px; "
-                                   "border-bottom-left-radius: 15px; }"
-                                   "QPushButton::hover { border: 2px solid #ffffff; }"
-                                   "QPushButton:pressed { background-color: #9c0000; }");
-
-    ui->dealButton->setStyleSheet("QPushButton { background-color: #10c92f; color: #ffffff; font-weight: bold; "
-                                  "border-top-right-radius: 15px; "
-                                  "border-top-left-radius: 0px; "
-                                  "border-bottom-right-radius: 0px; "
-                                  "border-bottom-left-radius: 15px; }"
-                                  "QPushButton::hover { border: 2px solid #ffffff; }"
-                                  "QPushButton:pressed { background-color: #9c0000; }");
-
-    ui->newGameButton->setStyleSheet("QPushButton { background-color: #254b70; color: #ffffff; font-weight: bold; border-radius: 10px; }"
-                                     "QPushButton::hover { border: 2px solid #ffffff; }"
-                                     "QPushButton:pressed { background-color: #9c0000; }");
-
-    ui->exitButton->setStyleSheet("QPushButton { background-color: #254b70; color: #ffffff; font-weight: bold; border-radius: 10px; }"
-                                  "QPushButton::hover { border: 2px solid #ffffff; }"
-                                  "QPushButton:pressed { background-color: #9c0000; }");
-
-    ui->playerScoreLabel->setStyleSheet("image: url(:/images/textures/score.png);");
-    ui->dealerScoreLabel->setStyleSheet("image: url(:/images/textures/score.png);");
+    ui->playerScoreLabel->setStyleSheet(StyleHelper::getScoreLabelStyle());
+    ui->dealerScoreLabel->setStyleSheet(StyleHelper::getScoreLabelStyle());
 
     connect(ui->decreaseBetButton, &QPushButton::clicked, [this]() { updateBetBalanceLabels(-10); });
     connect(ui->increaseBetButton, &QPushButton::clicked, [this]() { updateBetBalanceLabels(10); });
@@ -148,22 +90,6 @@ void MainWindow::endGame()
     }
 }
 
-void MainWindow::paintEvent(QPaintEvent *event)
-{
-    Q_UNUSED(event);
-
-    QPainter painter(this);
-
-    if (ui->stackedWidget->currentWidget() == ui->mainMenuPage) {
-        painter.drawPixmap(rect(), mainMenuBackground_);
-    }
-    else {
-        painter.drawPixmap(rect(), gameBackground_);
-    }
-
-}
-
-
 void MainWindow::on_newGameButton_clicked()
 {
     game_->resetBalance();
@@ -180,6 +106,7 @@ void MainWindow::on_dealButton_clicked()
     if (game_->placeBet(bet)) {
         ui->betGameLabel->setText(QString::number(bet));
         ui->balanceGameLabel->setText(QString::number(game_->getBalance()));
+
         ui->stackedWidget->setCurrentWidget(ui->gamePage);
         game_->start();
     }
@@ -204,13 +131,11 @@ void MainWindow::on_standButton_clicked()
 void MainWindow::on_musicButton_clicked()
 {
     if (audioHandler_->isMusicPlaying()) {
-        ui->musicButton->setStyleSheet("image: url(:/images/icons/musicOff.svg) no-repeat; "
-                                       "background-color: transparent;");
+        ui->musicButton->setStyleSheet(StyleHelper::getMusicOffButtonStyle());
         audioHandler_->stopMusic();
     }
     else {
-        ui->musicButton->setStyleSheet("image: url(:/images/icons/musicOn.svg) no-repeat; "
-                                       "background-color: transparent;");
+        ui->musicButton->setStyleSheet(StyleHelper::getMusicOnButtonStyle());
         audioHandler_->playMusic();
     }
 }
@@ -219,13 +144,11 @@ void MainWindow::on_musicButton_clicked()
 void MainWindow::on_volumeButton_clicked()
 {
     if (audioHandler_->isSoundEffectsEnabled()) {
-        ui->volumeButton->setStyleSheet("image: url(:/images/icons/volumeOff.svg) no-repeat; "
-                                       "background-color: transparent;");
+        ui->volumeButton->setStyleSheet(StyleHelper::getVolumeOffButtonStyle());
         audioHandler_->enableSoundEffects(false);
     }
     else {
-        ui->volumeButton->setStyleSheet("image: url(:/images/icons/volumeOn.svg) no-repeat; "
-                                       "background-color: transparent;");
+        ui->volumeButton->setStyleSheet(StyleHelper::getVolumeOnButtonStyle());
         audioHandler_->enableSoundEffects(true);
     }
 }
@@ -258,10 +181,25 @@ void MainWindow::on_actionSkin3_triggered()
 
 void MainWindow::on_actionLoadCustomSkin_triggered()
 {
-    QString path = QFileDialog::getOpenFileName(nullptr, "Choose your skin", "", "Images (*.png *.jpg *.jpeg)");
-
+    QString path = QFileDialog::getOpenFileName(nullptr, "Choose your skin", "",
+                                                "Images (*.png *.jpg *.jpeg)");
     if (!path.isEmpty()) {
         game_->changeCardsSkin(path);
+    }
+}
+
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event);
+
+    QPainter painter(this);
+
+    if (ui->stackedWidget->currentWidget() == ui->mainMenuPage) {
+        painter.drawPixmap(rect(), mainMenuBackground_);
+    }
+    else {
+        painter.drawPixmap(rect(), gameBackground_);
     }
 }
 

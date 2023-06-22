@@ -11,11 +11,13 @@ public:
     Hand(int startX, int startY, int cardWidth, int cardIndent);
 
     void addCard(const std::shared_ptr<Card>& card);
+
     int getScore() const;
     int getScoreCertainCard(int index) const;
     int getCurrX_() const;
     int getCurrY_() const;
     const std::shared_ptr<Card>& getCard(int index) const;
+
     void clear();
 
 private:

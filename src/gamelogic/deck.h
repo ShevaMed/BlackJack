@@ -9,24 +9,22 @@
 class Deck
 {
 public:
-    Deck(int startX, int startY, int widthCard, int heightCard, QWidget *parent = nullptr);
+    Deck(int startX, int startY, int widthCard, int heightCard, QWidget *parent);
 
     void shuffle();
-    void resetCards();
     const std::shared_ptr<Card>& dealCard();
 
     void loadSkinCards(QString path);
+
     QPixmap getSkinCards() const;
+
+    void resetCards();
     void updateSkinCards();
-
-
-
 
 private:
     std::vector<std::shared_ptr<Card>> cards_;
     int currentCardIndex_;
     QPixmap skinCards_;
-
 
 };
 

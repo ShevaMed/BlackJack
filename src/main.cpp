@@ -1,8 +1,6 @@
 #include "src/ui/mainwindow.h"
 
 #include <QApplication>
-#include <QMediaPlayer>
-#include <QAudioOutput>
 
 int main(int argc, char *argv[])
 {

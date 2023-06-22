@@ -16,6 +16,7 @@ SOURCES += \
     src/gamelogic/hand.cpp \
     src/gamelogic/igame.cpp \
     src/main.cpp \
+    src/style/stylehelper.cpp \
     src/ui/mainwindow.cpp
 
 HEADERS += \
@@ -25,6 +26,7 @@ HEADERS += \
     src/gamelogic/deck.h \
     src/gamelogic/hand.h \
     src/gamelogic/igame.h \
+    src/style/stylehelper.h \
     src/ui/mainwindow.h
 
 FORMS += \
