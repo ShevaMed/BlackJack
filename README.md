@@ -3,9 +3,6 @@ This is a C++ implementation of the classic card game Blackjack. The game featur
 
 The cards are animated and appear to move onto the screen from any side. Additionally, the game allows for the customization of card skins and includes sound playback (music and sound effects).
 
-## Development
-The implementation follows modern C++ practices and utilizes various features such as virtual functions, smart pointers, and RAII. The codebase embraces the best practices of C++ and aims to provide an efficient and maintainable solution.
-
 ## Demonstration
 ![screenshot](https://github.com/ShevaMed/BlackJack/blob/main/screenshots/demonstration.gif)
 
@@ -23,6 +20,9 @@ The goal of Blackjack is to beat the dealer's hand without going over 21. Here a
 - To 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn.
 - If a player's hand goes over 21, they bust and automatically lose the round, regardless of the dealer's hand.
 The game provides buttons for the player to either 'Hit' (ask for another card) or 'Stand' (end their turn). The dealer's and player's cards are rendered on the screen.
+
+## Development
+The implementation follows modern C++ practices and utilizes various features such as virtual functions, smart pointers, and RAII. The codebase embraces the best practices of C++ and aims to provide an efficient and maintainable solution.
 
 ## Installation
 To set up the project, follow these steps:
