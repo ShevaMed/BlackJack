@@ -17,6 +17,7 @@ void Card::cardReset()
 {
     this->hide();
     this->move(startX_, startY_);
+    hiden_ = true;
 }
 
 int Card::getValue() const
