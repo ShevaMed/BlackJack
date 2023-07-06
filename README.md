@@ -27,12 +27,19 @@ The implementation follows modern C++ practices and utilizes various features su
 ## Installation
 To set up the project, follow these steps:
 1. Clone the repository to your local machine.
-2. Install the necessary technologies and libraries specified in the project's [Technologies Used](#technologies-used).
+2. Install the necessary technologies and libraries specified in the project's [Dependencies](#dependencies).
 3. Build a project with Qt Creator using the `BlackJack.pro` file.
-4. Compile the project with the Desktop Qt 6.4.0 MinGW 64-bit or higher version.
+4. Compile the project with the Desktop MinGW (>= 11.2.0) 64-bit for C++.
 5. Now you can run the program using Qt Creator.
+
+## Dependencies
+- Qt (>= 6.4.0) in C++
+- Desktop MinGW (>= 11.2.0) 64-bit for C++
+- Qt Creator (>= 8.0.2) or other IDE
+
+To download Qt, Compiler and IDE, you need to follow the link: https://www.qt.io/download-open-source and download the Qt Online Installer or Qt Source Packages.
 
 ## Technologies Used
 - Framework: Qt 6.4.0 in C++
+- Compiler: Desktop MinGW 11.2.0 64-bit for C++
 - IDE: Qt Creator 8.0.2
-- Compiler: Desktop Qt 6.4.0 MinGW 64-bit
